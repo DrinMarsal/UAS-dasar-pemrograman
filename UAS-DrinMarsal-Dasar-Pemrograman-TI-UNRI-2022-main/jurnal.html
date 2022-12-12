@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List Jurnal</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <section>
+            <h1>Data Jurnal Dengan VueJs</h1>
+            <table>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        TITLE
+                    </th>
+                    <th>
+                        ISBN
+                    </th>
+                    <th>
+                        AUTHOR
+                    </th>
+                </tr>
+                <tr v-for="(buku, index) in books" @click="Upping(index)">
+                    <td>{{buku.id}}</td>
+                    <td>{{buku.title}}</td>
+                    <td>{{buku.isbn}}</td>
+                    <td>{{buku.author}}</td>
+                </tr>
+            </table>
+            <button @click="Adding()">Buat Jurnal Baru</button>
+            <div id="grey" v-show="Add">
+                <div class="modal">
+                    <label>Title :</label>
+                    <input type="text" v-model="title">
+                    <label>ISBN :</label>
+                    <input type="text" v-model="isbn">
+                    <label>Author :</label>
+                    <input type="text" v-model="author">
+                    <button @click="add = false">Batal</button>
+                    <button class="green" @click="AddingJurnal">Tambah Jurnal</button>
+                </div>
+            </div>
+            <div id="grey" v-show="Up">
+                <div class="modal">
+                    <label>Title :</label>
+                    <input type="text" v-model="title">
+                    <label>ISBN :</label>
+                    <input type="text" v-model="isbn">
+                    <label>Author :</label>
+                    <input type="text" v-model="author">
+                    <button @click="up = false">Batal</button>
+                    <button class="green" @click="UppingJurnal(idu)">Update Jurnal</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="/js/application.js"></script>
+</body>
+</html>
